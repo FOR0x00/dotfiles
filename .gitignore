@@ -5,6 +5,10 @@
 !ghostty/
 !ghostty/**
 
+!git/
+!git/**
+
+
 !ideavim
 !ideavim/**
 
@@ -16,6 +20,9 @@
 
 !lazygit/
 !lazygit/**
+
+!npm/
+!npm/**
 
 !nvim/
 !nvim/**

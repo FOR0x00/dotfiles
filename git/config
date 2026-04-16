@@ -1,0 +1,14 @@
+[alias]
+  # remove last commit, keep file changes
+  undo = reset --soft HEAD^
+  # remove last commit
+  cancel = reset --hard HEAD^
+  # add some changes
+  onemore = commit -a --amend --no-edit
+[include]
+	path = ~/.gitconfig.local
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
+	process = git-lfs filter-process
