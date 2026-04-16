@@ -1,0 +1,208 @@
+" basic settings
+" https://raw.githubusercontent.com/wiki/JetBrains/ideavim/set-commands.md
+source ~/.config/vim/vimrc
+
+" handler
+
+" let g:NERDTreeMapCloseDir        = "h"
+let g:NERDTreeMapToggleZoom      = "z"
+let g:NERDTreeMapJumpParent      = "h"
+let g:NERDTreeMapActivateNode    = "l"
+let g:NERDTreeMapJumpRoot        = "H"
+let g:NERDTreeMapNewFile         = "a"
+let g:NERDTreeMapNewDir          = "A"
+let g:NERDTreeMapPaste           = "p"
+let g:NERDTreeMapRefresh         = "R"
+let g:NERDTreeMapRename          = "r"
+let g:NERDTreeMapMenu            = ","
+
+let g:highlightedyank_highlight_duration = "500"
+
+" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+nmap <C-n> <Plug>NextWholeOccurrence
+xmap <C-n> <Plug>NextWholeOccurrence
+nmap g<C-n> <Plug>NextOccurrence
+xmap g<C-n> <Plug>NextOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
+
+nmap s <Action>(flash.search)
+xmap s <Action>(flash.search)
+
+" keep racfator in normal
+set idearefactormode=keep
+
+" plugins
+set NERDTree
+set surround
+set commentary
+set argtextobj
+set mini-ai
+set functiontextobj
+set textobj-indent
+set textobj-entire
+set multiple-cursors
+set highlightedyank
+set which-key
+
+nnoremap <leader><Esc> <Nop>
+
+" goto
+let g:WhichKeyDesc_Goto_Test = "gt GotoTest"
+let g:WhichKeyDesc_Goto_SuperMethod = "gs GotoSuperMethod"
+let g:WhichKeyDesc_Goto_GotoImplementation = "gI GotoImplementation"
+let g:WhichKeyDesc_Goto_Preview = "gp Preview"
+let g:WhichKeyDesc_Goto_Declaration = "gd GotoDeclaration"
+let g:WhichKeyDesc_Goto_TypeDeclaration = "gD GotoTypeDeclaration"
+let g:WhichKeyDesc_Goto_References = "gr References"
+let g:WhichKeyDesc_Goto_ParameterInfo = "gK ParameterInfo"
+let g:WhichKeyDesc_Goto_JumpToLastChange = "g, JumpToLastChange"
+nnoremap gt :action GotoTest<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gI :action GotoImplementation<CR>
+nnoremap gp :action QuickImplementations<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gD :action GotoTypeDeclaration<CR>
+" nnoremap K :action ShowHoverInfo<CR>
+nnoremap gr :action ShowUsages<CR>
+nnoremap gK :action ParameterInfo<CR>
+inoremap <C-k> :action ParameterInfo<CR>
+nnoremap g, :action JumpToLastChange<CR>
+
+" []
+" goto n/p
+let g:WhichKeyDesc_Left_Reference = "[[ Reference"
+let g:WhichKeyDesc_Right_Reference = "]] Reference"
+let g:WhichKeyDesc_Left_Method = "[f Method"
+let g:WhichKeyDesc_Right_Method = "]f Method"
+let g:WhichKeyDesc_Left_Error = "[e Error"
+let g:WhichKeyDesc_Right_Error = "]e Error"
+nnoremap [[ :action GotoPrevElementUnderCaretUsage<CR>
+nnoremap ]] :action GotoNextElementUnderCaretUsage<CR>
+nnoremap [f :action MethodUp<CR>
+nnoremap ]f :action MethodDown<CR>
+nnoremap [e :action GotoPreviousError<CR>
+nnoremap ]e :action GotoNextError<CR>
+
+" tab
+let g:WhichKeyDesc_Leader_Quit = "<leader>q Quit"
+let g:WhichKeyDesc_Leader_Quit_All = "<leader>qq QuitAll"
+let g:WhichKeyDesc_Leader_Quit_Other = "<leader>qo QuitOther"
+nnoremap <Tab> :action NextTab<CR>
+nnoremap <S-Tab> :action PreviousTab<CR>
+nnoremap <leader>qq :action CloseAllEditors<CR>
+nnoremap <leader>qo :action CloseAllEditorsButActive<CR>
+nnoremap <leader>q<Esc> <Nop>
+
+" collapse
+let g:WhichKeyDesc_Z_CollapseAll = "zC CollapseAll"
+let g:WhichKeyDesc_Z_ExpandAll = "zO ExpandAll"
+let g:WhichKeyDesc_Z_MaxWindow = "zm MaxWindow"
+let g:WhichKeyDesc_Z_TogglePresentationMode = "zp TogglePresentationMode"
+let g:WhichKeyDesc_Z_ToggleFullScreen = "zf ToggleFullScreen"
+nnoremap zC :action CollapseAllRegions<CR>
+nnoremap zO :action ExpandAllRegions<CR>
+nnoremap zm :action MaximizeEditorInSplit<CR> \| :action HideAllWindows<CR>
+nnoremap zp :action TogglePresentationMode<CR>
+nnoremap zf :action ToggleFullScreen<CR>
+
+" bookmark
+let g:WhichKeyDesc_M_ToggleBookmark = "mm ToggleBookmark"
+let g:WhichKeyDesc_M_ShowBookmarks = "ms ShowBookmarks"
+nnoremap mm :action ToggleBookmark<CR>
+nnoremap ms :action ShowBookmarks<CR>
+
+" file action
+let g:WhichKeyDesc_Leader_GotoFile = "<leader><Space> GotoFile"
+let g:WhichKeyDesc_Leader_File = "<leader>f File"
+let g:WhichKeyDesc_Leader_File_GotoFile = "<leader>ff GotoFile"
+let g:WhichKeyDesc_Leader_File_RecentFiles = "<leader>fr RecentFiles"
+let g:WhichKeyDesc_Leader_File_NewElement = "<leader>fn NewElement"
+nnoremap <leader><Space> :action GotoFile<CR>
+nnoremap <leader>ff :action GotoFile<CR>
+nnoremap <leader>fr :action RecentFiles<CR>
+nnoremap <leader>fn :action NewElement<CR>
+nnoremap <leader>f<Esc> <Nop>
+" global search
+let g:WhichKeyDesc_Leader_Search = "<leader>/ Search"
+noremap <leader>/ :action FindInPath<CR>
+vnoremap <leader>/ :action FindSelectionInPath<CR>
+" Explore
+let g:WhichKeyDesc_Leader_Explore = "<leader>e Explore"
+nnoremap <leader>e :action SelectInProjectView<CR>
+" Refactor
+let g:WhichKeyDesc_Leader_Refactor = "<leader>r Refactor"
+noremap <leader>r :action Refactorings.QuickListPopupAction<CR>
+
+" window by idea keymap
+" map <A-1> :action ActivateTerminalToolWindow<CR>
+" map <S-Esc> :action HideActiveWindow<CR>
+
+" editor
+noremap <Enter> :action EditorSelectWord<CR>
+vnoremap <BS> :action EditorUnSelectWord<CR>
+imap <C-Space> :action CodeCompletion<CR>
+" imap <C-S-CR> :action EditorCompleteStatement<CR> by idea
+imap <C-u> <action>($Undo)
+noremap / :action Replace<CR>
+nnoremap <C-i> :action Forward<CR>
+nnoremap <C-o> :action Back<CR>
+nnoremap R :action RenameElement<CR>
+
+" map <A-p> :action ParameterInfo<CR> by command-p
+" map <C-CR> :action Generate<CR> by idea
+" map <A-o> :action FileStructurePopup<CR> by command + o idea
+" map <A-p> :action ParameterInfo<CR> by command-p idea
+" map <A-e> :action ShowErrorDescription<CR> by command + e idea
+" map <C-j> :action MoveStatementDown<CR> by command + j
+" map <C-k> :action MoveStatementUp<CR> by command + k
+
+" format
+let g:WhichKeyDesc_Leader_Code = "<leader>c Code"
+let g:WhichKeyDesc_Leader_Code_Format = "<leader>cf Format"
+let g:WhichKeyDesc_Leader_Code_RenameElement = "<leader>cr Rename"
+let g:WhichKeyDesc_Leader_Code_RenameFile = "<leader>cR RenameFile"
+let g:WhichKeyDesc_Leader_Code_Symbols = "<leader>cs Symbols"
+nnoremap <leader>cf :action ReformatCode<CR> \| :action OptimizeImports<CR>
+vnoremap <leader>cf :action ReformatCode<CR>
+nnoremap <leader>cr :action RenameElement<CR>
+nnoremap <leader>cR :action RenameFile<CR>
+nnoremap <leader>cs :action FileStructurePopup<CR>
+nnoremap <leader>c<Esc> <Nop>
+
+" Git
+let g:WhichKeyDesc_Leader_G = "<leader>g Git"
+let g:WhichKeyDesc_Leader_GG = "<leader>gg Actions"
+let g:WhichKeyDesc_Leader_GR = "<leader>gr RollbackChangedLines"
+let g:WhichKeyDesc_Leader_GC = "<leader>gc CheckinProject"
+let g:WhichKeyDesc_Leader_GH = "<leader>gh ShowFileHistory"
+let g:WhichKeyDesc_Leader_GP = "<leader>gp UpdateFiles"
+nnoremap <leader>gg :action Vcs.QuickListPopupAction<CR>
+nnoremap <leader>gr :action Vcs.RollbackChangedLines<CR>
+nnoremap <leader>gc :action CheckinProject<CR>
+nnoremap <leader>gh :action Vcs.ShowTabbedFileHistory<CR>
+nnoremap <leader>gp :action UpdateFiles<CR>
+nnoremap <leader>g<Esc> <Nop>
+
+" command
+let g:WhichKeyDesc_CR = "\\r Run"
+let g:WhichKeyDesc_CRC = "\\R RunChoose"
+let g:WhichKeyDesc_CD = "\\d Debug"
+let g:WhichKeyDesc_CDC = "\\D DebugChoose"
+let g:WhichKeyDesc_CB = "\\b ToggleLineBreakpoint"
+let g:WhichKeyDesc_CC = "\\c Compile"
+" let g:WhichKeyDesc_CT = ",t RunTest"
+nnoremap \\r :action RunClass<CR>
+nnoremap \\R :action ChooseRunConfiguration<CR>
+nnoremap \\d :action DebugClass<CR>
+nnoremap \\D :action ChooseDebugConfiguration<CR>
+nnoremap \\b :action ToggleLineBreakpoint<CR>
+nnoremap \\c :action XDebugger.Hotswap.Modified.Files<CR>
+" nmap ,t :action RerunFailedTests<CR>
+nnoremap \\<Esc> <Nop>
+
+" y
+let g:WhichKeyDesc_YP = "yp CopyAbsolutePath"
+let g:WhichKeyDesc_YN = "yn CopyFileName"
+nnoremap yp :action CopyAbsolutePath<CR>
+nnoremap yn :action CopyFileName<CR>

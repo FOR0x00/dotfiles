@@ -1,0 +1,17 @@
+# https://github.com/zimfw/zimfw/blob/master/src/templates/zimrc
+
+if (( !$+commands[starship] )); then
+  zmodule git-info
+  zmodule prompt-pwd
+  zmodule magicmace
+fi
+
+# Additional completion definitions for Zsh.
+zmodule zsh-users/zsh-completions --fpath src
+# after all modules that add completion definitions.
+zmodule completion
+
+zmodule Aloxaf/fzf-tab
+zmodule zdharma-continuum/fast-syntax-highlighting
+zmodule zsh-users/zsh-autosuggestions
+zmodule hlissner/zsh-autopair
