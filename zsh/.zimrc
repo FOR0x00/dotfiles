@@ -1,5 +1,6 @@
 # https://github.com/zimfw/zimfw/blob/master/src/templates/zimrc
 
+zmodule input
 if (( !$+commands[starship] )); then
   zmodule git-info
   zmodule prompt-pwd
