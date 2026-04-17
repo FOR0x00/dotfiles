@@ -1,11 +1,10 @@
 # https://github.com/zimfw/zimfw/blob/master/src/templates/zimrc
 
 zmodule input
-if (( !$+commands[starship] )); then
-  zmodule git-info
-  zmodule prompt-pwd
-  zmodule magicmace
-fi
+
+# zmodule git-info
+# zmodule prompt-pwd
+# zmodule magicmace
 
 # Additional completion definitions for Zsh.
 zmodule zsh-users/zsh-completions --fpath src
