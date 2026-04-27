@@ -134,10 +134,6 @@ nnoremap <leader>e :action SelectInProjectView<CR>
 let g:WhichKeyDesc_Leader_Refactor = "<leader>r Refactor"
 noremap <leader>r :action Refactorings.QuickListPopupAction<CR>
 
-" window by idea keymap
-" map <A-1> :action ActivateTerminalToolWindow<CR>
-" map <S-Esc> :action HideActiveWindow<CR>
-
 " editor
 noremap <Enter> :action EditorSelectWord<CR>
 vnoremap <BS> :action EditorUnSelectWord<CR>
@@ -154,8 +150,8 @@ nnoremap R :action RenameElement<CR>
 " map <A-o> :action FileStructurePopup<CR> by command + o idea
 " map <A-p> :action ParameterInfo<CR> by command-p idea
 " map <A-e> :action ShowErrorDescription<CR> by command + e idea
-" map <C-j> :action MoveStatementDown<CR> by command + j
-" map <C-k> :action MoveStatementUp<CR> by command + k
+noremap <A-j> :action MoveLineDown<CR>
+noremap <A-k> :action MoveLineUp<CR>
 
 " format
 let g:WhichKeyDesc_Leader_Code = "<leader>c Code"
